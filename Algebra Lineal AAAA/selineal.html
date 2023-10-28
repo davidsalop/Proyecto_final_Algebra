@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resolución de Sistemas de Ecuaciones Lineales</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .equation-input {
+            margin: 10px 0;
+        }
+        
+        .equation-input label {
+            display: inline-block;
+            width: 100px;
+        }
+        
+        .equation-input input {
+            width: 50px;
+        }
+        
+        .method-input {
+            margin: 10px 0;
+        }
+        
+        .method-input label {
+            display: inline-block;
+            width: 100px;
+        }
+        
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resolución de Sistemas de Ecuaciones Lineales</h1>
+        
+        <div class="equation-input">
+            <label for="a1">a1:</label>
+            <input type="number" id="a1" placeholder="a1">
+            <label for="b1">b1:</label>
+            <input type="number" id="b1" placeholder="b1">
+            <label for="c1">c1:</label>
+            <input type="number" id="c1" placeholder="c1">
+            <label for="result1">Resultado 1:</label>
+            <input type="number" id="result1" placeholder="Resultado 1">
+        </div>
+        
+        <div class="equation-input">
+            <label for="a2">a2:</label>
+            <input type="number" id="a2" placeholder="a2">
+            <label for="b2">b2:</label>
+            <input type="number" id="b2" placeholder="b2">
+            <label for="c2">c2:</label>
+            <input type="number" id="c2" placeholder="c2">
+            <label for="result2">Resultado 2:</label>
+            <input type="number" id="result2" placeholder="Resultado 2">
+        </div>
+        
+        <div class="method-input">
+            <label for="method">Método:</label>
+            <select id="method">
+                <option value="gauss-jordan">Gauss-Jordan</option>
+                <option value="cramer">Regla de Cramer</option>
+            </select>
+        </div>
+        
+        <div class="button-container">
+            <button onclick="solveSystem()">Resolver Sistema</button>
+        </div>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function solveSystem() {
+            const a1 = parseFloat(document.getElementById("a1").value);
+            const b1 = parseFloat(document.getElementById("b1").value);
+            const c1 = parseFloat(document.getElementById("c1").value);
+            const result1 = parseFloat(document.getElementById("result1").value);
+
+            const a2 = parseFloat(document.getElementById("a2").value);
+            const b2 = parseFloat(document.getElementById("b2").value);
+            const c2 = parseFloat(document.getElementById("c2").value);
+            const result2 = parseFloat(document.getElementById("result2").value);
+
+            const method = document.getElementById("method").value;
+
+            // Implementa la lógica de resolución de sistemas aquí (Gauss-Jordan o Regla de Cramer).
+            function solve2x2Cramer(a, b, c, d, e, f) {
+    const determinant = a * d - b * c;
+
+    if (determinant === 0) {
+        return "Sistema sin solución o con soluciones infinitas";
+    } else {
+        const x = (e * d - b * f) / determinant;
+        const y = (a * f - e * c) / determinant;
+        return `Solución única: x = ${x}, y = ${y}`;
+    }
+}
+
+
+            // Luego, muestra el resultado en la página.
+            const resultElement = document.getElementById("result");
+            resultElement.textContent = "Resultado del sistema de ecuaciones";
+        }
+    </script>
+</body>
+</html>
